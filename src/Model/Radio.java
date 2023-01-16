@@ -1,3 +1,8 @@
+/**
+ * Daniel Dubon, 22233
+ * Bianca Calderón, 22272
+ * Andrés Ortega, 22305
+ */
 package Model;
 
 public class Radio implements IRadio {
