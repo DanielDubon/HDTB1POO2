@@ -5,16 +5,24 @@
  */
 package Model;
 
+import java.util.ArrayList;
+
 public class Radio implements IRadio {
  private String freq;
- private double actualStation;
+ private double actualStationFM;
+
+ private int actualStationAM;
  private boolean isON;
  private int[] saveFreq = new int[12];
 
 
+ private ArrayList<Integer>  RadioAMFAVS = new ArrayList<Integer>();
+ private ArrayList<Double>  RadioFMFAVS = new ArrayList<Double>();
+
  public Radio(String freq, int actualStation, boolean isON) {
-  this.freq = "";
-  this.actualStation = 0.0;
+  this.freq = "AM";
+  this.actualStationAM = 530;
+  this.actualStationFM = 87.9;
   this.isON = false;
  }
 
@@ -30,73 +38,92 @@ public class Radio implements IRadio {
 
  @Override
  public boolean isOn() {
-  return isOn();
+  return isON;
  }
 
  @Override
  public void setFrequence(String freq) throws Exception {
-  if (freq.equals("AM")) {
-   if (530 <= actualStation && actualStation <= 1610 && actualStation % 10 == 0) {
-    this.actualStation = actualStation;
-   } else {
-    System.out.println("No es una frecuencia AM válida");
-   }
-  } else if (freq.equals("FM")) {
-    if (87.9 <= actualStation && actualStation <= 107.9 && actualStation % 0.2 == 0) {
-     this.actualStation = actualStation;
-     } else {
-    System.out.println("No es una frecuencia FM válida");
-    }
-  }
+   this.freq = freq;
  }
 
  @Override
  public String getFrequence() {
-  return null;
+  return freq;
  }
 
  @Override
  public void Forward() {
+  if (freq.equals("AM")){
+
+    if (!(actualStationAM>=1610)) {
+     actualStationAM = actualStationAM + 10;
+    }else {
+     actualStationAM = 530;
+    }
+  }
+
+  if (freq.equals("FM")){
+
+   if (!(actualStationFM>=107.9)) {
+    actualStationFM = actualStationFM + 0.2;
+   }else {
+    actualStationFM = 87.9;
+   }
+  }
 
  }
 
  @Override
  public void Backward() {
+  if (freq.equals("AM")){
 
+   if (!(actualStationAM==530)) {
+    actualStationAM = actualStationAM - 10;
+   }else {
+    actualStationAM = 1610;
+   }
+  }
+
+  if (freq.equals("FM")){
+
+   if (!(actualStationFM==87.9)) {
+    actualStationFM = actualStationFM - 0.2;
+   }else {
+    actualStationFM = 107.9;
+   }
+  }
  }
 
  @Override
  public double getFMActualStation() {
-  return 0;
+  return actualStationFM;
  }
 
  @Override
  public int getAMActualStation() {
-  return 0;
+  return actualStationAM;
  }
 
  @Override
  public void setFMActualStation(double actualStation) {
-
+        this.actualStationFM = actualStation;
  }
 
  @Override
  public void setAMActualStation(int actualStation) {
-
+       this.actualStationAM = actualStation;
  }
 
  @Override
  public void saveFMStation(double actualStation, int slot) {
 
+     RadioFMFAVS.add(slot,actualStation);
  }
 
  @Override
  public void saveAMStation(int actualStation, int slot) {
-   if (slot >= 1 && slot <= 12){
-    this.saveFreq[slot-1] = actualStation;
-}else{
-    System.out.println("Botón no válido");
-   }
+
+  RadioAMFAVS.add(slot,actualStation);
 
   }
 
