@@ -2,6 +2,7 @@ package View;
 
 import Model.Radio;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UI {
@@ -69,7 +70,7 @@ public class UI {
 
                     case "6":
                         System.out.println("1)Guardar estación AM");
-                        System.out.println("1)Guardar estación FM");
+                        System.out.println("2)Guardar estación FM");
                         opcion = in.nextLine();
                         if (opcion.equals("1")) {
                             System.out.println("Que estación desea guardar: ");
@@ -83,7 +84,31 @@ public class UI {
                         break;
 
                     case "7":
-
+                        System.out.println("Qué frecuencía desea: ");
+                        System.out.println("1) AM");
+                        System.out.println("2) FM");
+                        opcion = in.nextLine();
+                        if (opcion.equals(("1"))){
+                            System.out.println("Qué estación quiere escuchar: ");
+                            System.out.println("1.");
+                            System.out.println("2.");
+                            System.out.println("3.");
+                            System.out.println("4.");
+                            System.out.println("5.");
+                            System.out.println("6.");
+                            opcion = in.nextLine();
+                            System.out.println("Estas esuchando la estación: "+ radio.getRadioAMFAVS().get(Integer.parseInt(opcion)));
+                        } else if (opcion.equals("2")){
+                            System.out.println("Qué estación quiere escuchar: ");
+                            System.out.println("1.");
+                            System.out.println("2.");
+                            System.out.println("3.");
+                            System.out.println("4.");
+                            System.out.println("5.");
+                            System.out.println("6.");
+                            opcion = in.nextLine();
+                            System.out.println("Estas esuchando la estación: "+ radio.getRadioFMFAVS().get(Integer.parseInt(opcion)));
+                        }
                         break;
 
                 }

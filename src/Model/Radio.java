@@ -14,8 +14,6 @@ public class Radio implements IRadio {
  private int actualStationAM;
  private boolean isON;
  private int[] saveFreq = new int[12];
-
-
  private ArrayList<Integer>  RadioAMFAVS = new ArrayList<Integer>();
  private ArrayList<Double>  RadioFMFAVS = new ArrayList<Double>();
 
@@ -136,5 +134,18 @@ public class Radio implements IRadio {
   public int getAMSlot ( int slot){
    return 0;
   }
+
+ public ArrayList<Integer> getRadioAMFAVS() {
+  return RadioAMFAVS;
  }
+ public void setRadioAMFAVS(ArrayList<Integer> radioAMFAVS) {
+  RadioAMFAVS = radioAMFAVS;
+ }
+ public ArrayList<Double> getRadioFMFAVS() {
+  return RadioFMFAVS;
+ }
+ public void setRadioFMFAVS(ArrayList<Double> radioFMFAVS) {
+  RadioFMFAVS = radioFMFAVS;
+ }
+}
 
