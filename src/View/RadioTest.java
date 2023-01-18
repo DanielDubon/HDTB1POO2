@@ -9,7 +9,7 @@ import static org.junit.Assert.assertFalse;
 public class RadioTest {
 
         @Test
-    public void testFoward() {
+    public void testForward() {
             Radio radio = new Radio("AM", 0, true);
             radio.Forward();
             int estacion = radio.getAMActualStation();

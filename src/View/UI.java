@@ -47,14 +47,14 @@ public class UI {
                 case "2": radio.off(); break;
             }
             if (radio.isOn()) {
-                switch (opcion){
+                switch (opcion) {
                     case "3":
                         System.out.println("1)AM");
                         System.out.println("1)FM");
                         opcion = in.nextLine();
-                        if (opcion.equals("1")){
+                        if (opcion.equals("1")) {
                             radio.setFrequence("AM");
-                        }else if(opcion.equals("2")){
+                        } else if (opcion.equals("2")) {
                             radio.setFrequence("FM");
 
                         }
@@ -67,8 +67,24 @@ public class UI {
                         radio.Backward();
                         break;
 
+                    case "6":
+                        System.out.println("1)Guardar estación AM");
+                        System.out.println("1)Guardar estación FM");
+                        opcion = in.nextLine();
+                        if (opcion.equals("1")) {
+                            System.out.println("Que estación desea guardar: ");
+                            radio.saveAMStation(0, 0);
+                            int estacionAM = in.nextInt();
+                        } else if (opcion.equals("2")) {
+                            System.out.println("Que estación desea guardar: ");
+                            radio.saveFMStation(0, 0);
 
-                    // falta case 6 y case 7
+                        }
+                        break;
+
+                    case "7":
+
+                        break;
 
                 }
 
